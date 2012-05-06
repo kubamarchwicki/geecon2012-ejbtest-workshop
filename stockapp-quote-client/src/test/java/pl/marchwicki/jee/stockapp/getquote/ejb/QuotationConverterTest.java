@@ -30,6 +30,7 @@ public class QuotationConverterTest {
 		
 		Quotation quotation = new Quotation.Builder()
 			.withSymbol("GOOG")
+			.withName("Google Inc.")
 			.withLast("596.97")
 			.withDate(c.getTime())
 			.withChange("-14.05")

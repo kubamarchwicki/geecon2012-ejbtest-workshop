@@ -8,41 +8,23 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>pl.marchwicki.jee</groupId>
-	<artifactId>stockapp-web</artifactId>
-	<packaging>war</packaging>
+	<artifactId>stockapp-ejb-openejbtest</artifactId>
 
 	<dependencies>
-		<!-- JSF -->
 		<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
+			<groupId>pl.marchwicki.jee</groupId>
+			<artifactId>stockapp-ejb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<!-- Servlet -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-			<scope>provided</scope>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>openejb-core</artifactId>
+			<version>4.0.0</version>
+			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<!-- JEE -->
-		<dependency>
-			<groupId>javaee</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>5</version>
-			<scope>provided</scope>
-		</dependency>		
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -53,8 +35,7 @@
 					<source>1.5</source>
 					<target>1.5</target>
 				</configuration>
-			</plugin>		
+			</plugin>
 		</plugins>
 	</build>
-	
 </project>

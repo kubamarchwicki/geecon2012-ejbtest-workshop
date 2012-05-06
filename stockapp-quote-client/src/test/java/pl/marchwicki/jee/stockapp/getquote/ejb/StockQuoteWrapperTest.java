@@ -20,6 +20,8 @@ public class StockQuoteWrapperTest {
 	public void webserviceResponse() {
 		Quotation quotation = wrapper.getQuotation("IBM");
 		assertNotNull(quotation);
+		assertEquals("IBM", quotation.getSymbol());
+		assertEquals("International Bus", quotation.getName());
 	}
 	
 }

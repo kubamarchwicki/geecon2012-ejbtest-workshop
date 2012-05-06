@@ -16,7 +16,10 @@ public class Company {
 	@Column(name = "COMPANY_ID")
 	private long id;
 	
-	@Column(name = "ABBRV")
-	private String abbrevation;
+	@Column(name = "COMPANY_SYMBOL")
+	private String symbol;
+	
+	@Column(name = "COMPANY_NAME")
+	private String companyName;
 	
 }
