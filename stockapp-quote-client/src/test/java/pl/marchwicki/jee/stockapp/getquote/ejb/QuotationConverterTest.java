@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 
+/**
+ * Traditional unit test
+ *
+ */
 public class QuotationConverterTest {
 
 	QuotationConverterLocal converter = new QuotationConverter();

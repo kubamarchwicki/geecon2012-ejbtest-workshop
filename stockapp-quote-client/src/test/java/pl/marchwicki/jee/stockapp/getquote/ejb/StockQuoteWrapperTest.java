@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 
+/**
+ * More of an integration test - with two dependencies 
+ * are manually resolved
+ */
 public class StockQuoteWrapperTest {
 
 	StockQuoteWrapper wrapper = new StockQuoteWrapper();
