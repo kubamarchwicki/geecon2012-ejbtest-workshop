@@ -11,6 +11,7 @@
 		<module>stockapp-ejb</module>
 		<module>stockapp-web</module>
 		<module>stockapp-ear</module>
+		<module>stockapp-core</module>
 	</modules>
 
 	<dependencies>

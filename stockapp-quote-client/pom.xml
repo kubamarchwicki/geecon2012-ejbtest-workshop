@@ -13,6 +13,11 @@
 	
 	<dependencies>
 		<dependency>
+			<groupId>pl.marchwicki.jee</groupId>
+			<artifactId>stockapp-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
 			<artifactId>jaxws-rt</artifactId>
 			<version>2.1.4</version>

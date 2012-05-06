@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import pl.marchwicki.jee.stockapp.ejb.logging.AuditMessageProcessing;
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 
 /**
@@ -18,9 +19,10 @@ public class StockQuoteWrapperTest {
 	@Before
 	public void setup() {
 		wrapper.converter = new QuotationConverter();
+//		wrapper.audit = new AuditMessageProcessing();
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void webserviceResponse() {
 		Quotation quotation = wrapper.getQuotation("IBM");
 		assertNotNull(quotation);

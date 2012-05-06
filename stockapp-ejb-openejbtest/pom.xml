@@ -24,14 +24,12 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.0.0.Final</version>
 			<scope>test</scope>
 		</dependency>
-		-->
 	</dependencies>
 
 	<build>

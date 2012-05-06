@@ -1,11 +1,12 @@
 package pl.marchwicki.jee.stockapp.getquote.ejb;
 
-import static org.junit.Assert.*;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import pl.marchwicki.jee.stockapp.ejb.logging.AuditMessageProcessingLocal;
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 
 /**
@@ -20,6 +21,7 @@ public class StockQuoteWrapperMockTest {
 	@Before
 	public void setup() {
 		wrapper.converter = mock(QuotationConverterLocal.class);
+		wrapper.audit = mock(AuditMessageProcessingLocal.class);
 		when(wrapper.converter.convert(anyString()))
 				.thenReturn(new Quotation());
 	}
