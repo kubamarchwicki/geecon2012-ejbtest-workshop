@@ -8,7 +8,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class AuditingDatabaseSchemaTest {
+public class AuditingDatabaseBootstrapTest {
 
 	@BeforeClass
 	public static void setup() {
@@ -18,7 +18,7 @@ public class AuditingDatabaseSchemaTest {
 	@Test
 	public void testSchema() {
 		DataSourceMockUp mock = new DataSourceMockUp.Builder()
-			.fromSqlFile("/pl/marchwicki/jee/stockapp/ejb/logging/entity/import.sql")
+			.fromSqlFile("pl/marchwicki/jee/stockapp/ejb/logging/entity/import.sql")
 			.withAnnotatedClass(AuditLog.class)
 			.build();
 		
@@ -27,8 +27,7 @@ public class AuditingDatabaseSchemaTest {
 		em.clear();
 		
 		assertNull(em.find(AuditLog.class, 0l));
-		
-		AuditLog log = em.find(AuditLog.class, 1l);
+		AuditLog log = em.getReference(AuditLog.class, 1l);
 		assertEquals("Hello World!", log.getMessage());
 	}
 

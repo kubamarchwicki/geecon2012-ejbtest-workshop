@@ -8,7 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import org.hibernate.ejb.Ejb3Configuration;
-import org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 @SuppressWarnings("deprecation")
