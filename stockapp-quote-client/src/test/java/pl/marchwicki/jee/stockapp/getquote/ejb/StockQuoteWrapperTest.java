@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import pl.marchwicki.jee.stockapp.ejb.logging.AuditMessageProcessing;
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 
 /**

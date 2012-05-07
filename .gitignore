@@ -5,3 +5,5 @@
 *.classpath
 */test-output
 /stockapp-quote-ws/src/main/java
+/stockapp-ejb-openejbtest/data
+/stockapp-ejb-openejbtest/activemq-data

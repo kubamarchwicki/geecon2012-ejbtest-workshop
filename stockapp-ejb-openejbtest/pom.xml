@@ -23,6 +23,11 @@
 		</dependency>		
 		<dependency>
 			<groupId>pl.marchwicki.jee</groupId>
+			<artifactId>stockapp-quote-ws</artifactId>
+			<scope>provided</scope>
+		</dependency>			
+		<dependency>
+			<groupId>pl.marchwicki.jee</groupId>
 			<artifactId>stockapp-ejb</artifactId>
 			<scope>provided</scope>
 		</dependency>
