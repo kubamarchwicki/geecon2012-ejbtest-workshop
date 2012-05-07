@@ -11,6 +11,7 @@ import org.apache.openejb.junit.Module;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pl.marchwicki.jee.stockapp.ejb.logging.AuditMessageProcessing;
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 
 @RunWith(ApplicationComposer.class)
@@ -30,6 +31,7 @@ public class StockQuoteWrapperIntegrationTest {
 	@Module
 	public EjbJar module() {
 		final EjbJar ejbJar = new EjbJar();
+		ejbJar.addEnterpriseBean(new StatelessBean(AuditMessageProcessing.class));
 		ejbJar.addEnterpriseBean(new StatelessBean(QuotationConverter.class));
 		ejbJar.addEnterpriseBean(new StatelessBean(StockQuoteWrapper.class));
 		

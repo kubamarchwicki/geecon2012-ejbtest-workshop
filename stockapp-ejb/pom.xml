@@ -7,7 +7,7 @@
 		<groupId>pl.marchwicki.jee</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>pl.marchwicki.jee</groupId>
+	<name>stockapp-ejb</name>
 	<artifactId>stockapp-ejb</artifactId>
 	<packaging>ejb</packaging>
 
@@ -15,7 +15,7 @@
 		<dependency>
 			<groupId>pl.marchwicki.jee</groupId>
 			<artifactId>stockapp-quote-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>

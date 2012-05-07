@@ -4,4 +4,4 @@
 */target
 *.classpath
 */test-output
-/stockapp-quote-client/src/main/java
+/stockapp-quote-ws/src/main/java

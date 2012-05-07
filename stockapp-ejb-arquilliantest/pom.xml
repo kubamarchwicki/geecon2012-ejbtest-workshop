@@ -7,7 +7,7 @@
 		<groupId>pl.marchwicki.jee</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>pl.marchwicki.jee</groupId>
+	<name>stockapp-ejb-arquilliantest</name>
 	<artifactId>stockapp-ejb-arquilliantest</artifactId>
 
 	<dependencyManagement>
@@ -25,8 +25,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>pl.marchwicki.jee</groupId>
+			<artifactId>stockapp-core</artifactId>
+			<scope>provided</scope>
+		</dependency>	
+		<dependency>
+			<groupId>pl.marchwicki.jee</groupId>
+			<artifactId>stockapp-quote-client</artifactId>
+			<scope>provided</scope>
+		</dependency>		
+		<dependency>
+			<groupId>pl.marchwicki.jee</groupId>
 			<artifactId>stockapp-ejb</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -36,17 +46,4 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
