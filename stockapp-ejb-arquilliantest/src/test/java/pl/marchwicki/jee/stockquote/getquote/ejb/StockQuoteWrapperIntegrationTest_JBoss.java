@@ -1,18 +1,23 @@
 package pl.marchwicki.jee.stockquote.getquote.ejb;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.io.File;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.spec.EnterpriseArchive;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pl.marchwicki.jee.stockapp.ejb.logging.AuditMessageProcessing;
 import pl.marchwicki.jee.stockapp.ejb.logging.AuditMessageProcessingLocal;
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 import pl.marchwicki.jee.stockapp.getquote.ejb.QuotationConverter;
@@ -21,15 +26,21 @@ import pl.marchwicki.jee.stockapp.getquote.ejb.StockQuoteWrapper;
 import pl.marchwicki.jee.stockapp.getquote.ejb.StockQuoteWrapperLocal;
 
 @RunWith(Arquillian.class)
-public class StockQuoteWrapperIntegrationTest {
+public class StockQuoteWrapperIntegrationTest_JBoss {
 
 	@Deployment
-	public static JavaArchive createDeployment() {
-		return ShrinkWrap.create(JavaArchive.class, "test.jar")
-				.addClasses(AuditMessageProcessingLocal.class, AuditMessageProcessingMock.class)
+	public static EnterpriseArchive createDeployment() {
+		//https://community.jboss.org/wiki/HowDoIAddJARFilesToTheTestArchive
+		return ShrinkWrap.create(EnterpriseArchive.class, "test.ear")
+			.addAsLibrary(new File("target/test-libs/stockapp-quote-ws.jar"))
+			.addAsLibrary(new File("target/test-libs/stockapp-quote-client.jar"))
+			.addAsLibrary(new File("target/test-libs/stockapp-core.jar"))
+			.addAsModule(ShrinkWrap.create(JavaArchive.class, "test.jar")
+				.addClasses(AuditMessageProcessingLocal.class, AuditMessageProcessing.class)
 				.addClasses(QuotationConverterLocal.class, QuotationConverter.class)
 				.addClasses(StockQuoteWrapperLocal.class, StockQuoteWrapper.class)
-				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+			);
 	}
 	
 	@EJB
@@ -41,20 +52,6 @@ public class StockQuoteWrapperIntegrationTest {
 		assertNotNull(q);
 		assertEquals("YHOO", q.getSymbol());
 		assertEquals("Yahoo! Inc.", q.getName());
-	}
-
-	@Stateless
-	public static class AuditMessageProcessingMock implements AuditMessageProcessingLocal {
-
-		public void auditLog(String message) {
-			System.out.println("I'm just a mock - I do nothing");
-		}
-
-		public void serializeAndAuditLog(Object obj) {
-			// TODO Auto-generated method stub
-			
-		}
-		
 	}
 	
 }
