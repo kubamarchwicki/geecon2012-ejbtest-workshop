@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import pl.marchwicki.jee.stockapp.ejb.logging.AuditMessageProcessing;
 import pl.marchwicki.jee.stockapp.getquote.basetypes.Quotation;
 
 /**
@@ -15,18 +16,48 @@ public class StockQuoteWrapperTest {
 
 	StockQuoteWrapper wrapper = new StockQuoteWrapper();
 	
-	@Before
-	public void setup() {
-		wrapper.converter = new QuotationConverter();
+//	@Test
+//	public void webserviceSimpleResponse() {
+//		//given
+//		wrapper.converter = new QuotationConverter();
 //		wrapper.audit = new AuditMessageProcessing();
-	}
+//		
+//		//when
+//		Quotation quotation = wrapper.getQuotation("IBM");
+//		
+//		//then
+//		assertNotNull(quotation);
+//		assertEquals("IBM", quotation.getSymbol());
+//		assertEquals("International Bus", quotation.getName());
+//	}	
 	
 	@Test(expected = NullPointerException.class)
-	public void webserviceResponse() {
+	public void webserviceNPEResponse() {
+		//given
+		wrapper.converter = new QuotationConverter();
+		
+		//when
 		Quotation quotation = wrapper.getQuotation("IBM");
+		
+		//then
 		assertNotNull(quotation);
 		assertEquals("IBM", quotation.getSymbol());
 		assertEquals("International Bus", quotation.getName());
 	}
+	
+	@Test(expected = ClassFormatError.class)
+	public void webserviceResponse() {
+		//given
+		wrapper.converter = new QuotationConverter();
+		wrapper.audit = new AuditMessageProcessing();
+		
+		//when
+		Quotation quotation = wrapper.getQuotation("IBM");
+		
+		//then
+		assertNotNull(quotation);
+		assertEquals("IBM", quotation.getSymbol());
+		assertEquals("International Bus", quotation.getName());
+	}	
 	
 }
