@@ -17,6 +17,19 @@
 			<artifactId>stockapp-quote-client</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-annotations-ejb3</artifactId>
+			<version>4.2.3.GA</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>5.3.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
