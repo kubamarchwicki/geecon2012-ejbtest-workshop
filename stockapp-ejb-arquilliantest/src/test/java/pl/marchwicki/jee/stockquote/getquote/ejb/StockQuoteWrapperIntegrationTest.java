@@ -26,7 +26,7 @@ public class StockQuoteWrapperIntegrationTest {
 	@Deployment
 	public static JavaArchive createDeployment() {
 		return ShrinkWrap.create(JavaArchive.class, "test.jar")
-				.addClasses(AuditMessageProcessingLocal.class, AuditMessageProcessingMock.class)
+				.addClasses(AuditMessageProcessingLocal.class, AuditMessageProcessingStub.class)
 				.addClasses(QuotationConverterLocal.class, QuotationConverter.class)
 				.addClasses(StockQuoteWrapperLocal.class, StockQuoteWrapper.class)
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
@@ -44,7 +44,7 @@ public class StockQuoteWrapperIntegrationTest {
 	}
 
 	@Stateless
-	public static class AuditMessageProcessingMock implements AuditMessageProcessingLocal {
+	public static class AuditMessageProcessingStub implements AuditMessageProcessingLocal {
 
 		public void auditLog(String message) {
 			System.out.println("I'm just a mock - I do nothing");

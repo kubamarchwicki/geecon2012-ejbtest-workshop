@@ -56,21 +56,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jboss.arquillian.container</groupId>
-			<artifactId>arquillian-glassfish-embedded-3.1</artifactId>
-			<version>1.0.0.CR3</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.extras</groupId>
-			<artifactId>glassfish-embedded-all</artifactId>
-			<version>3.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.apache.felix.framework</artifactId>
-			<version>4.0.2</version>
-			<scope>test</scope>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>arquillian-tomee-embedded</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 	</dependencies>
