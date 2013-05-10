@@ -17,36 +17,7 @@ public class StockQuoteWrapperTest {
 	StockQuoteWrapper wrapper = new StockQuoteWrapper();
 	
 //	@Test
-//	public void webserviceSimpleResponse() {
-//		//given
-//		wrapper.converter = new QuotationConverter();
-//		wrapper.audit = new AuditMessageProcessing();
-//		
-//		//when
-//		Quotation quotation = wrapper.getQuotation("IBM");
-//		
-//		//then
-//		assertNotNull(quotation);
-//		assertEquals("IBM", quotation.getSymbol());
-//		assertEquals("International Bus", quotation.getName());
-//	}	
-	
-	@Test(expected = NullPointerException.class)
-	public void webserviceNPEResponse() {
-		//given
-		wrapper.converter = new QuotationConverter();
-		
-		//when
-		Quotation quotation = wrapper.getQuotation("IBM");
-		
-		//then
-		assertNotNull(quotation);
-		assertEquals("IBM", quotation.getSymbol());
-		assertEquals("International Bus", quotation.getName());
-	}
-	
-	@Test(expected = ClassFormatError.class)
-	public void webserviceResponse() {
+	public void webserviceSimpleResponse() {
 		//given
 		wrapper.converter = new QuotationConverter();
 		wrapper.audit = new AuditMessageProcessing();
@@ -59,5 +30,34 @@ public class StockQuoteWrapperTest {
 		assertEquals("IBM", quotation.getSymbol());
 		assertEquals("International Bus", quotation.getName());
 	}	
+	
+//	@Test(expected = NullPointerException.class)
+//	public void webserviceNPEResponse() {
+//		//given
+//		wrapper.converter = new QuotationConverter();
+//		
+//		//when
+//		Quotation quotation = wrapper.getQuotation("IBM");
+//		
+//		//then
+//		assertNotNull(quotation);
+//		assertEquals("IBM", quotation.getSymbol());
+//		assertEquals("International Bus", quotation.getName());
+//	}
+	
+//	@Test(expected = ClassFormatError.class)
+//	public void webserviceResponse() {
+//		//given
+//		wrapper.converter = new QuotationConverter();
+//		wrapper.audit = new AuditMessageProcessing();
+//		
+//		//when
+//		Quotation quotation = wrapper.getQuotation("IBM");
+//		
+//		//then
+//		assertNotNull(quotation);
+//		assertEquals("IBM", quotation.getSymbol());
+//		assertEquals("International Bus", quotation.getName());
+//	}	
 	
 }

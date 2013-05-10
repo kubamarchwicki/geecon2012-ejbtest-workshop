@@ -34,9 +34,6 @@ public class AuditingDatabaseIntegrationTest {
 	@Resource
 	DataSource dataSource;
 	
-//	@Resource
-//	UserTransaction tx;
-	
 	@PersistenceContext
 	EntityManager em;
 

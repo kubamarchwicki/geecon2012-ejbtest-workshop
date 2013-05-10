@@ -1,12 +1,13 @@
 package pl.marchwicki.jee.stockapp.ejb.logging;
 
+import static com.jayway.awaitility.Awaitility.*;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.Queue;
@@ -29,36 +30,40 @@ public class AuditMessageProcessorTest {
 	ConnectionFactory connectionFactory;
 
 	@Resource(name = "queue/audit", mappedName = "queue/audit")
-	Queue queue;	
+	Queue queue;
 
 	@EJB
 	AuditMessageProcessingLocal processor;
-	
+
 	final String originalTestMessage = "Hello World!";
+	Message receive;
 	
 	@Module
 	public EjbJar module() {
 		final EjbJar ejbJar = new EjbJar();
 		ejbJar.addEnterpriseBean(new StatelessBean(AuditMessageProcessing.class));
-		
+
 		return ejbJar;
 	}
-	
+
 	@Before
 	public void prepareMessage() {
-		processor.auditLog(originalTestMessage);		
+		processor.auditLog(originalTestMessage);
 	}
-	
-	@Test
-	public void processQueue() throws JMSException {
-        final Connection connection = connectionFactory.createConnection();
-        connection.start();
-        final Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-        final MessageConsumer incoming = session.createConsumer(queue);
-        Message receive = incoming.receive();
-        
-        assertThat(receive, new IsInstanceOf(TextMessage.class));
-        assertEquals(originalTestMessage, ((TextMessage) receive).getText());
+	@Test(timeout = 2000)
+	public void processQueue() throws Exception {
+		final Connection connection = connectionFactory.createConnection();
+		connection.start();
+		final Session session = connection.createSession(false,
+				Session.AUTO_ACKNOWLEDGE);
+
+		final MessageConsumer incoming = session.createConsumer(queue);
+		receive = incoming.receive();
+		await().until( fieldIn(this).ofType(Message.class), notNullValue());
+
+		assertThat(receive, new IsInstanceOf(TextMessage.class));
+		assertEquals(originalTestMessage, ((TextMessage) receive).getText());
 	}
+
 }

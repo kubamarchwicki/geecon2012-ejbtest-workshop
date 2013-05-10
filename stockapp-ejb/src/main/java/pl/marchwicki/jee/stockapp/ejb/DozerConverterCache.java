@@ -13,9 +13,6 @@ import org.dozer.Mapper;
 import org.jboss.annotation.ejb.Management;
 import org.jboss.annotation.ejb.Service;
 
-//@Service
-//@Management(DozerConverterCacheLocal.class)
-
 @Singleton
 @ConcurrencyManagement(ConcurrencyManagementType.BEAN)
 public class DozerConverterCache implements DozerConverterCacheLocal {
